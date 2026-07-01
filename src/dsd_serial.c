@@ -1,3 +1,5 @@
+#include <unistd.h>
+#include <fcntl.h>
 #ifdef _WIN32
 
 #include "dsd.h"

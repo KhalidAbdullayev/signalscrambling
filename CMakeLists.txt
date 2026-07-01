@@ -47,7 +47,7 @@ include_directories(SYSTEM ${LIBSNDFILE_INCLUDE_DIR} ${MBE_INCLUDE_DIR} ${ITPP_I
 set(LIBS
     mbe-static
     sndfile
-    itpp_static
+    itpp
 )
 
 if(PORTAUDIO_FOUND)
