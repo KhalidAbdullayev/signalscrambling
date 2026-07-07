@@ -71,6 +71,20 @@ target_include_directories(dsd PRIVATE
     ${CMAKE_BINARY_DIR}
 )
 
+# Suppress register keyword warnings in C++17 (for C++ files only)
+set_source_files_properties(
+    src/p25p1_check_hdu.cpp
+    src/p25p1_check_ldu.cpp
+    src/p25p1_check_nid.cpp
+    src/Hamming.cpp
+    PROPERTIES COMPILE_FLAGS "-Wno-register"
+)
+
+# Fix for MinGW: Allow multiple definitions of gettimeofday from different libraries
+if(MINGW)
+    target_link_options(dsd PRIVATE "LINKER:--allow-multiple-definition")
+endif()
+
 TARGET_LINK_LIBRARIES(dsd ${LIBS})
 
 include(GNUInstallDirs)
